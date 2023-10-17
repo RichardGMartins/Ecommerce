@@ -11,6 +11,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     $valor = $_POST['valor'];
     $file = $_POST['imagem'];
 
+    $nome = trim($nome);
+    $descricao= trim($descricao);
     #POSSANDO INSTRUÇÕES SQL PARA O BANCO
     #VALIDANDO SE USUARIO EXISTE
 
@@ -27,11 +29,19 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     }
     else
     {
+        if ($nome == "" || $descricao == "") 
+        {
+            echo "<script>window.alert('Por favor preencha os campos corretamente!');</script>";
+            echo "<script>window.location.href='cadastroprodutos.php';</script>";
+        }
+        else
+        {
         $sql = "INSERT INTO produtos(prod_nome, prod_descricao,prod_quantidade,prod_valor,prod_ativo,prod_img)
          VALUES ('$nome','$descricao','$quantidade','$valor','n','$file')";
         mysqli_query($link, $sql);
         echo "<script>window.alert('PRODUTO CADASTRADO COM SUCESSO');</script>";
         echo "<script>window.location.href='cadastroprodutos.php';</script>";
+        }
     }
 }
 ?>
@@ -46,11 +56,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
 <body>
     <div>
         <form action="cadastroprodutos.php" method="post">
-            <input type="text" name ="nome" id="nome" placeholder="Nome de Usuario"><br>
-            <textarea type="text" name ="descricao" id="descricao" placeholder="Descrição" rows="5"></textarea><br>
-            <input type="number" name ="quantidade" id="quantidade" placeholder="Quantidade"><br>
-            <input type="number" name ="valor" id="valor " step="0.01" placeholder="Valor do Produto"><br>
-            <input type="file" name ="imagem" id="imagem" placeholder="Insira a imagem"><br>
+            <input type="text" name ="nome" id="nome" placeholder="Nome de Usuario" required><br>
+            <textarea type="text" name ="descricao" id="descricao" placeholder="Descrição" rows="5" required></textarea><br>
+            <input type="number" min="0" name ="quantidade" id="quantidade" placeholder="Quantidade" required><br>
+            <input type="number" min="0" name ="valor" id="valor " step="0.01" placeholder="Valor do Produto" required><br>
+            <input type="file" name ="imagem" id="imagem" placeholder="Insira a imagem" required><br>
             <input type="submit" name ="cadastrar" id="cadastrar" placeholder="Cadastrar"><br>
         </form>
     </div>
