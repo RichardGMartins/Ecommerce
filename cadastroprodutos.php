@@ -8,14 +8,30 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $quantidade = $_POST['quantidade'];
-    $valor = $_POST['valor'];
+    $valor = str_replace(",",".",$_POST['valor']);
     $file = $_POST['imagem'];
 
     $nome = trim($nome);
     $descricao= trim($descricao);
     #POSSANDO INSTRUÇÕES SQL PARA O BANCO
     #VALIDANDO SE USUARIO EXISTE
-
+    if(isset ($_FILES['imagem']) && $_FILE['imagem']['error']===UPLOAD_ERR_OK){
+        $tipo = exif_imagetype($_FILE['imagem']['tmp_name']);
+        if ($tipo !== false) {
+            //o arquivo é uma imagem
+            $imagem_temp = $_FILE['imagem']['tmp_name'];
+            $imagem = file_get_contents($imagem_temp);
+            $imagem_base64 = base64_encode($imagem);
+        } else {
+            //o arquivo não é uma imagem
+            $imagem = file_get_contents('C:\xampp\htdocs\projetosti26\ecommerce\img\alert.jpg');
+            $imagem_base64 = base64_encode($imagem);
+        }
+    } else {
+        // o arquivo não foi enviado
+        $imagem = file_get_contents('C:\xampp\htdocs\projetosti26\ecommerce\img\alert.jpg');
+        $imagem_base64 = base64_encode($imagem);
+    }
     $sql = "SELECT COUNT(prod_id) FROM produtos WHERE prod_nome = '$nome' AND prod_ativo = 's'";
     $retorno = mysqli_query($link, $sql);
     while ($tbl = mysqli_fetch_array($retorno))
@@ -37,12 +53,13 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         else
         {
         $sql = "INSERT INTO produtos(prod_nome, prod_descricao,prod_quantidade,prod_valor,prod_ativo,prod_img)
-         VALUES ('$nome','$descricao','$quantidade','$valor','n','$file')";
+         VALUES ('$nome','$descricao','$quantidade','$valor','n','$imagem_base64')";
         mysqli_query($link, $sql);
         echo "<script>window.alert('PRODUTO CADASTRADO COM SUCESSO');</script>";
         echo "<script>window.location.href='cadastroprodutos.php';</script>";
         }
     }
+  
 }
 ?>
 <!DOCTYPE html>

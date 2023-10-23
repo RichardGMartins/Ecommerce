@@ -31,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         }
         else
         {
-            $sql = "INSET INTO usuarios (usu_nome, usu_senha,usu_ativo)
+            $sql = "INSERT INTO usuarios (usu_nome, usu_senha,usu_ativo)
             VALUES ('$nome', '$senha', 'n')";
             mysqli_query($link, $sql);
             echo "<script>window.alert('USUARIO CADASTRADO');</script>";
-            echo "<script>window.location.href='cadastrausuario.php';</script>";
+            echo "<script>window.location.href='cadastrousuario.php';</script>";
         }
     }
 }
@@ -54,8 +54,24 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
                 <!-- Required é usado para o usuario tentar passar em branco o cadastro e impedir o mesmo -->
                 <input type="text" name ="nome" id="nome" placeholder="Nome de Usuario" required><br>
                 <input type="password" name ="senha" id="senha" placeholder="Senha" required><br>
+                <span id="MostrarSenha" onclick="MostrarSenha()">👀</span> <br><br>
                 <input type="submit" name ="cadastrar" id="cadastrar" placeholder="Cadastrar"><br>
             </form>
         </div>
     </body>
 </html>
+
+<script>
+    function MostrarSenha() {
+        var passwordInput = document.getElementById("senha");
+        var PasswordIcon = document.getElementById("MostrarSenha")
+        if(passwordInput.type === "password"){
+         passwordInput.type = "text";
+         PasswordIcon.textContent = "❌"
+        }
+        else {
+            passwordInput.type = "password";
+            PasswordIcon.textContent = "👀";
+        }
+    }
+</script>
