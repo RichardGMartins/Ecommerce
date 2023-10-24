@@ -49,13 +49,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         <title>Cadastro Usuário</title>
     </head>
     <body>
-        <div>
+        <div class="div-form">
             <form action="cadastrousuario.php" method="post">
                 <!-- Required é usado para o usuario tentar passar em branco o cadastro e impedir o mesmo -->
+                <h2>Cadastro de Usuario</h2> <!--Para qualquer atualização usar CTRL + F5-->
                 <input type="text" name ="nome" id="nome" placeholder="Nome de Usuario" required><br>
-                <input type="password" name ="senha" id="senha" placeholder="Senha" required><br>
+                <input type="password" name ="senha" id="senha" placeholder="Senha" minlength="8" maxlength="32" required><br>
                 <span id="MostrarSenha" onclick="MostrarSenha()">👀</span> <br><br>
-                <input type="submit" name ="cadastrar" id="cadastrar" placeholder="Cadastrar"><br>
+                <button type="submit" name ="cadastrar" id="btn" >Cadastrar</button><br>
             </form>
         </div>
     </body>

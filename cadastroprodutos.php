@@ -15,11 +15,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     $descricao= trim($descricao);
     #POSSANDO INSTRUÇÕES SQL PARA O BANCO
     #VALIDANDO SE USUARIO EXISTE
-    if(isset ($_FILES['imagem']) && $_FILE['imagem']['error']===UPLOAD_ERR_OK){
-        $tipo = exif_imagetype($_FILE['imagem']['tmp_name']);
+    #Carregar imagem dos Produtos 
+    if(isset ($_FILES['imagem']) && $_FILES['imagem']['error']===UPLOAD_ERR_OK){
+        $tipo = exif_imagetype($_FILES['imagem']['tmp_name']);
         if ($tipo !== false) {
             //o arquivo é uma imagem
-            $imagem_temp = $_FILE['imagem']['tmp_name'];
+            $imagem_temp = $_FILES['imagem']['tmp_name'];
             $imagem = file_get_contents($imagem_temp);
             $imagem_base64 = base64_encode($imagem);
         } else {
@@ -72,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
 </head>
 <body>
     <div>
-        <form action="cadastroprodutos.php" method="post">
+        <form action="cadastroprodutos.php" method="post" enctype="multipart/form-data">
             <input type="text" name ="nome" id="nome" placeholder="Nome de Usuario" required><br>
             <textarea type="text" name ="descricao" id="descricao" placeholder="Descrição" rows="5" required></textarea><br>
             <input type="number" min="0" name ="quantidade" id="quantidade" placeholder="Quantidade" required><br>

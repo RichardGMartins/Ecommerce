@@ -89,9 +89,42 @@ table {
   width: 75%;
   margin:auto;
 }
-h2{
+.div-form {
+  padding-top: 10em;
+  
+}
+.div-form input {
+  border: 2px solid #550469;
+  border-radius: 10px;
+}
+.div-form #btn {
+  border: 2px solid #000;
+  padding: 12px 16px;
+  border-radius: 15px;
+  color:#fff;
+  background-color: #550469;
+  transition: 1s;
+  margin-left: 68%;
+  cursor: pointer;
+}
+.div-form #btn:hover {
+  border:2px solid #550469;
+  color: #000;
+  background-color: #e0dceb;
 
-  color: #e0dceb;
+}
+.div-form h2{
+  color: #550469;
+  font-weight: bold;
+}
+.div-form #MostrarSenha{
+  position: absolute;
+  margin-left: 260px;
+  margin-top: -60px;
+  cursor: pointer;
+}
+.div-form input::placeholder {
+  color: #550469;
 }
 h1{
 
@@ -107,6 +140,7 @@ p{
   height: 300px;
   float: center;
 }
+
 
 /* IMAGEM DO ALTERA PRODUTO */
 .imagem_atual{

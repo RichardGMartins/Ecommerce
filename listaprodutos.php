@@ -9,10 +9,14 @@ $ativo = "s";
 #COLETA O BOTÃO MÉTODO POST VINDO DO HTML
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $ativo = $_POST ['ativo'];
-    #VERIFICA SE O USUARIO ESTÁ ATIVO PARA LISTAR, SE 'S' LISTA SENÃO, NÃO LISTA
+    #VERIFICA SE O USUARIO ESTÁ ATIVO PARA LISTAR, SE 'S' LISTA SENÃO, NÃO LISTA E Puxa se todos os Produtos
     if ($ativo == 's') {
         $sql = "SELECT * FROM produtos WHERE prod_ativo = 's'";
         $retorno = mysqli_query($link, $sql); 
+    }
+    else if ($ativo == 't') {
+        $sql = "SELECT * FROM produtos ORDER BY prod_id";
+        $retorno = mysqli_query($link, $sql);
     }
     else {
         $sql = "SELECT * FROM produtos WHERE prod_ativo = 'n'";
@@ -36,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <br>
                 <input type="radio" name ="ativo" class="radio" value="n" required onclick="submit()" <?= $ativo == 'n' ? "checked" : "" ?>> INATIVOS 
                 <br>   
+                <input type="radio" name="ativo" class="radio" value="t" required onclick="submit()" <?= $ativo =='t' ? "checked" : "" ?>> TODOS 
             </form>
             <div class="container">
                 <table border="1">
