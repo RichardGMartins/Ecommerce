@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         <tr>
                             <td><?= $tbl[1] ?></td> <!--TRAZ SOMENTE A COLUNA 1 [nome] DO BANCO-->
                             <!--AO CLICAR NO BOTÃO ELE JA TRARA O ID DO USUARIO PARA PAGINA DO ALTERAR -->
-                            <td><a href="alterausuarios.php?id=<?= $tbl[0] ?>"><input type="button" value ="ALTERAR DADOS"></a></td>
+                            <td><a href="alterausuario.php?id=<?= $tbl[0] ?>"><input type="button" value ="ALTERAR DADOS"></a></td>
                             <td><?= $check = ($tbl[3] == "s") ? "SIM" : "NÃO" ?></td> 
                         </tr>
                     <?php

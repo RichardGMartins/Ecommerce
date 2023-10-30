@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                             <td><?= $tbl[3] ?></td><!--TRAZ SOMENTE A COLUNA 3 [Qtde Estoque] DO BANCO-->
                             <td>R$<?=  number_format($tbl[4],2,',','.') ?></td><!--TRAZ SOMENTE A COLUNA 4 [VALOR] DO BANCO-->
                             <td><img src="data:image/jpeg;base64,<?= $tbl[6] ?>" width="100" height="100" ></td><!--TRAZ SOMENTE A COLUNA 6 [IMagem] DO BANCO-->
-                            <td><a href="alteraprodutos.php?id=<?= $tbl[0] ?>"><input type="button" value ="ALTERAR DADOS"></a></td>
+                            <td><a href="alteraproduto.php?id=<?= $tbl[0] ?>"><input type="button" value ="ALTERAR DADOS"></a></td>
                             <td><?= $check = ($tbl[5] == "s") ? "SIM" : "NÃO" ?></td> 
                         </tr>
                     <?php
