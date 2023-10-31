@@ -1,5 +1,5 @@
 <?php 
-include("conectadb.php");
+include("cabecalho.php");
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $id = $_POST['id'];
@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $senha = $_POST['senha'];
 
     #BUSCAR O TEMPERO
-    /*$sql = "SELECT usu_tempero FROM usuarios WHERE usu_nome = $nome";
+    $sql = "SELECT usu_tempero FROM usuarios WHERE usu_nome = $nome";
     $retorno = mysqli_query($link,$sql);
     while ($tbl = mysqli_fetch_array($retorno)){
         $tempero = $tbl[0];
@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     #CASO A SENHA TENHA SIDO MODIFICADA
     if($senha != $senha2){
         $senha = md5($senha.$tempero);
-    }*/
+    }
     $sql = "UPDATE usuarios SET usu_senha = '$senha',usu_nome = '$nome', usu_ativo = '$ativo' WHERE usu_id = $id";
     mysqli_query($link,$sql);
 
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $nome = $tbl[1]; #Campo nome
         $senha = $tbl[2]; #Campo senha
         $ativo = $tbl[3]; #Campo ativo
-        #$tempero = $tbl[4]; #Campo tempero
+        $tempero = $tbl[4]; #Campo tempero
         $senha2 = $senha; #Campo 2 senha 2 para verificar se foi feita alguma mudança em senha
     }
 ?>

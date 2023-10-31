@@ -1,6 +1,6 @@
 <?php 
 #Conexão com o banco
-include("conectadb.php");
+include("cabecalho.php");
 #PASSANDO UMA INSTRUÇÃO AO BANCO DE DADOS
 $sql = "SELECT * FROM produtos WHERE prod_ativo = 's'";
 $retorno = mysqli_query($link, $sql);

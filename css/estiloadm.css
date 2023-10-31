@@ -105,7 +105,8 @@ table {
   color:#fff;
   background-color: #550469;
   transition: 1s;
-  margin-left: 68%;
+  width: 95px;
+  margin-left: 203px;
   cursor: pointer;
 }
 .div-form #btn:hover {
@@ -200,6 +201,18 @@ p{
 .div-form2 input::placeholder {
   color: #550469;
 }
+#lb-form {
+  font-style: italic;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+.div-form2 li {
+  list-style: none;
+  margin-left: 25px;
+  margin-top: -13px;
+  font-style: italic;
+}
+
 /* FORM DO ALTERA PRODUTO */
 .visualizaproduto{
     background-color: rgb(205, 191, 211);

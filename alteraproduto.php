@@ -1,5 +1,5 @@
 <?php 
-include("conectadb.php");
+include("cabecalho.php");
 if($_SERVER['REQUEST_METHOD'] == "POST"){
      $id = $_POST['id'];
      $nome = $_POST['nome'];
@@ -68,10 +68,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <input type="number" min="0" name ="valor" id="valor " step="0.01" value="<?= $valor ?>" required>
             <label>Imagem</label>
             <input type="file" name ="imagem" id="imagem" value="<?= $imagem_base64 ?>" required>
-            <label>Status: <?= $check = ($ativo =='s') ? "Ativo" : "Inativo" ?> </label>
+            <label id="lb-form">Status: <?= $check = ($ativo =='s') ? "Ativo" : "Inativo" ?> </label>
             <br>
-            <input type="radio" name = "ativo" value="s" <?=$ativo == "s" ? "checked" : "" ?>> ATIVO <br>
-            <input type="radio" name = "ativo" value="n" <?=$ativo == "n" ? "checked" : "" ?>> INATIVO <br>
+            <input type="radio" name = "ativo" value="s" <?=$ativo == "s" ? "checked" : "" ?>> <li>ATIVO</li> <br>
+            <input type="radio" name = "ativo"  value="n" <?=$ativo == "n" ? "checked" : "" ?>> <li>INATIVO</li> <br>
             <button type="submit" name ="cadastrar" id="btn">Alterar </button>
         </form>
     </div>

@@ -1,7 +1,7 @@
 <?php 
 #Inicia a conexão com o banco de dados
 
-include("conectadb.php");
+include("cabecalho.php");
 #Coleta de variáveis via formulário de HTML
 if ($_SERVER["REQUEST_METHOD"]=="POST")
 {
@@ -31,8 +31,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         }
         else
         {
-            $sql = "INSERT INTO usuarios (usu_nome, usu_senha,usu_ativo)
-            VALUES ('$nome', '$senha', 'n')";
+            $tempero = md5(rand(). date('H:i:s'));
+            $senha = md5($senha. $tempero);
+
+            $sql = "INSERT INTO usuarios (usu_nome, usu_senha,usu_ativo,usu_tempero)
+            VALUES ('$nome', '$senha', 'n', '$tempero')";
+            echo($sql);
+            //ALTER TABLE usuarios
+            // ADD usu_temepro VARCHAR(50);
             mysqli_query($link, $sql);
             echo "<script>window.alert('USUARIO CADASTRADO');</script>";
             echo "<script>window.location.href='cadastrousuario.php';</script>";
