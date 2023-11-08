@@ -8,9 +8,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $quantidade = $_POST['quantidade'];
-    $valor = str_replace(",",".",$_POST['valor']);
-    $file = $_POST['imagem'];
-
+    $valor = $_POST['valor'];
+   
     $nome = trim($nome);
     $descricao= trim($descricao);
     #POSSANDO INSTRUÇÕES SQL PARA O BANCO
@@ -53,9 +52,10 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
         }
         else
         {
-        $sql = "INSERT INTO produtos(prod_nome, prod_descricao,prod_quantidade,prod_valor,prod_ativo,prod_img)
-         VALUES ('$nome','$descricao','$quantidade','$valor','n','$imagem_base64')";
-        mysqli_query($link, $sql);
+        $sql = "INSERT INTO produtos(prod_nome, prod_descricao, prod_quantidade, prod_valor, prod_ativo, prod_img)
+         VALUES ('$nome','$descricao','$quantidade',$valor,'n','$imagem_base64')";
+         //echo $sql; //para debugar e puxar aonde o esta no banco
+        $a = mysqli_query($link, $sql);
         echo "<script>window.alert('PRODUTO CADASTRADO COM SUCESSO');</script>";
         echo "<script>window.location.href='cadastroprodutos.php';</script>";
         }
@@ -75,11 +75,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     <div class="div-form">
         <form action="cadastroprodutos.php" method="post" enctype="multipart/form-data">
             <h2>Cadastra Produtos</h2>
-            <input type="text" name ="nome" id="nome" placeholder="Nome de Usuario" required><br>
-            <input type="text" name ="descricao" id="descricao" placeholder="Descrição" rows="5" required></input><br>
-            <input type="number" min="0" name ="quantidade" id="quantidade" placeholder="Quantidade" required><br>
-            <input type="number" min="0" name ="valor" id="valor " step="0.01" placeholder="Valor do Produto" required><br>
-            <input type="file" name ="imagem" id="imagem" placeholder="Insira a imagem" required><br>
+            <input type="text" name="nome" id="nome" placeholder="Nome de Usuario" required><br>
+            <input type="text" name="descricao" id="descricao" placeholder="Descrição" rows="5" required></input><br>
+            <input type="number" name="quantidade" id="quantidade" min="0" placeholder="Quantidade" required><br>
+            <input type="number" name="valor" id="valor " step="0.01" min="0" placeholder="Valor do Produto" required><br>
+            <input type="file" name="imagem" id="imagem" placeholder="Insira a imagem" required><br>
             <button type="submit" name ="cadastrar" id="btn">Cadastrar</button><br>
         </form>
     </div>

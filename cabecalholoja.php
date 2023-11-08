@@ -1,0 +1,28 @@
+<?php 
+include ("conectadb.php");
+session_start();
+//isset é para saber se esta logado
+isset($_SESSION['nomeclientes'])?$nomeusuario = $_SESSION['nomeuclientes']:"";
+$nomeusuario = $_SESSION['nomeclientes'];
+?>
+
+<div>
+    <ul class="menu-loja">
+        <li><a href="loja.php">HOME</a></li>
+        <li><a href="carrinho.php">CARRINHO</a></li>
+        <li class="menuloja"><a href="logoutclientes.php">SAIR</a></li>
+
+        <?php
+        if($nomeusuario != null){
+        ?>
+            <li class="profile">OLÁ <?= strtoupper($nomeusuario)?></li>
+        <?php
+        } else {
+            ?>
+            <li class="profile">OLÁ <?= strtoupper($nomeusuario)?>aa</li>
+        <?php 
+            echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='loginusuario.php';</script>";
+        }
+        ?>
+    </ul>
+</div>
