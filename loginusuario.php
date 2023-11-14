@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             <span id="MostrarSenha" onclick="MostrarSenha()">👀</span> <br><br>
             <button type="submit" id="btn" name="login">Login</button>
             <button type="button" id="btn3" name="login">Recuperar Senha</button>
-            <a href="cadastrousuario.php"><button type="button" id="btn2" name="login">Cadastro</button></a>
+            <a href="cadastroclientes.php"><button type="button" id="btn2" name="login">Cadastro</button></a>
             
         </form>
     </div>

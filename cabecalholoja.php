@@ -2,9 +2,13 @@
 include ("conectadb.php");
 session_start();
 //isset é para saber se esta logado
-isset($_SESSION['nomeclientes'])?$nomeusuario = $_SESSION['nomeuclientes']:"";
-$nomeusuario = $_SESSION['nomeclientes'];
+isset($_SESSION['nomeclientes'])?$nomeclientes = $_SESSION['nomeclientes']:"";
+$nomeclientes = $_SESSION['nomeclientes'];
+
+isset($_SESSION['idclientes'])?$idclientes = $_SESSION['idclientes']:"";
+$idclientes = $_SESSION['idclientes'];
 ?>
+
 
 <div>
     <ul class="menu-loja">
@@ -13,13 +17,13 @@ $nomeusuario = $_SESSION['nomeclientes'];
         <li class="menuloja"><a href="logoutclientes.php">SAIR</a></li>
 
         <?php
-        if($nomeusuario != null){
+        if($nomeclientes != null){
         ?>
-            <li class="profile">OLÁ <?= strtoupper($nomeusuario)?></li>
+            <li class="profile">OLÁ <?= strtoupper($nomeclientes)?></li>
         <?php
         } else {
             ?>
-            <li class="profile">OLÁ <?= strtoupper($nomeusuario)?>aa</li>
+            <li class="profile">OLÁ <?= strtoupper($nomeclientes)?>aa</li>
         <?php 
             echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='loginusuario.php';</script>";
         }
