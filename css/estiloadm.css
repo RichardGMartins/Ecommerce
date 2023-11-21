@@ -2,7 +2,10 @@ html{
   background-color:  hwb(295 0% 87%); /* Define a cor de fundo do menu */
   font-family: Arial, Helvetica, sans-serif;
 }
-
+body {
+  margin: 0;
+  padding: 0;
+}
 .menu {
   list-style-type: none; /* Remove os marcadores de lista */
   margin: 0;
@@ -377,4 +380,26 @@ p{
     color: #fff; 
     border-radius: 10px;
   }
-  
+  /*Finaliza Carrinho*/
+  .div-form4 {
+    margin-left: 20px;
+    display: inline-block;
+    background-color: #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+  }
+  .img2 {
+    border-radius: 10px;
+    width: 250px;
+  }
+  #total {
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    width: 130px;
+    background-color: #000;
+  }
