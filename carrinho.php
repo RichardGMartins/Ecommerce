@@ -24,31 +24,32 @@ while($row = mysqli_fetch_assoc($retorno2)){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" href="./css/estiloadm.css">
+    <script src="https://kit.fontawesome.com/617f4dcf0c.js" crossorigin="anonymous"></script>
     <title>Carrinho</title>
 </head>
 <body>
-    <div class="div-form3" id="total">Total R$ <?=$total?>
-    <button id="btn2"><a href="finaliza_carrinho.php?id=<?=($idclientes)?>">Finaliza Carrinho</a></button></div>
-
-    <?php
+<?php
     while ($tbl = mysqli_fetch_array($retorno)){
         ?>
-        <div class="div-form4">
-            <img class="img2" src="data:image/jpeg;base64,<?=$tbl[7]?>" alt="Product Image">
-            <h3 class="titulo"><?= $tbl[4] ?></h3>
-            <h3 class="preco">R$ <?= $tbl[6] * $tbl[8]?></h3>
-            <label class="quantidade">Quantidade</label>
+        <table class="div-form4">
+            <td><img class="img2" src="data:image/jpeg;base64,<?=$tbl[7]?>" alt="Product Image"></td>
+            <td><h3 class="titulo"><?= $tbl[4] ?></h3></td>
+            <td><h3 class="preco">R$ <?= $tbl[6] * $tbl[8]?></h3></td>
+            <td><label class="quantidade">Quantidade</label></td>
             <div>
-            <button onclick="location.href='atualizar_carrinho.php?var1=<?= $tbl[3]?>&var2=<?= $tbl[8] - 1?>'" class="plus-button1">-</button>
-            <h3 class="number"><?= $tbl[8]?></h3>
-            <button onclick="location.href='atualizar_carrinho.php?var1=<?= $tbl[3]?>&var2=<?= $tbl[8] + 1?>'" class="plus-button2">+</button>
+            <td><button onclick="location.href='atualizar_carrinho.php?var1=<?= $tbl[3]?>&var2=<?= $tbl[8] - 1?>'" class="plus-button1"><i class="fa-solid fa-minus"></i></button></td>
+            <td><h3 class="number"><?= $tbl[8]?></h3></td>
+            <td><button onclick="location.href='atualizar_carrinho.php?var1=<?= $tbl[3]?>&var2=<?= $tbl[8] + 1?>'" class="plus-button2"><i class="fa-solid fa-plus"></i></button></td>
             </div>
             <br>
-            <button onclick="location.href='delete_produto_carrinho.php?var1=<?= $tbl[3]?>&var2=<?= $tbl[0]?>'"
-            class="plus-button">Excluir do carrinho</button>
-        </div>
+            <td><button onclick="location.href='delete_produto_carrinho.php?var1=<?= $tbl[3]?>&var2=<?= $tbl[0]?>'"
+            class="plus-button"><i class="fa-solid fa-trash"></i></button></td>
+        </table>
     <?php
     }
     ?>
+    <div id="total">SubTotal R$:<?=$total?>
+    <div class="subtotal">Frete R$: </div>
+    <button id="btn3"><a href="finaliza_carrinho.php?id=<?=($idclientes)?>">Concluir Compra</a></button></div>
 </body>
 </html>

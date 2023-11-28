@@ -43,6 +43,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login do Cliente</title>
     <link rel="stylesheet" href="./css/estiloadm.css">
+    <script src="https://kit.fontawesome.com/617f4dcf0c.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="div-form">
@@ -52,7 +53,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             <br>
             <input type="password" id="senha" name="senha" placeholder="Senha" required>
             <br>
-            <span id="MostrarSenha" onclick="MostrarSenha()">👀</span> <br><br>
+            <span id="MostrarSenha" onclick="MostrarSenha()"><i class="fa-regular fa-eye"></i></span> <br><br>
             <button type="submit" id="btn" name="login">Login</button>
             <button type="button" id="btn3" name="login">Recuperar Senha</button>
             <a href="cadastroclientes.php"><button type="button" id="btn2" name="login">Cadastro</button></a>
