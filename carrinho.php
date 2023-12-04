@@ -48,8 +48,9 @@ while($row = mysqli_fetch_assoc($retorno2)){
     <?php
     }
     ?>
-    <div id="total">SubTotal R$:<?=$total?>
-    <div class="subtotal">Frete R$: </div>
-    <button id="btn3"><a href="finaliza_carrinho.php?id=<?=($idclientes)?>">Concluir Compra</a></button></div>
+    <table class="div-form5">
+            <td>SubTotal R$:<?=$total?></td>
+            <td><button id="btn4"><a  id="click" href="finaliza_carrinho.php?id=<?=($idclientes)?>">Concluir Compra</a></button></td>
+    </table>
 </body>
 </html>
