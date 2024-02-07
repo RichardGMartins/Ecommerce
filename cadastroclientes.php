@@ -37,8 +37,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             $tempero = md5(rand(). date('H:i:s'));
             $senha = md5($senha. $tempero);
 
-            $sql = "INSERT INTO clientes (cli_nome, cli_senha,cli_ativo,cli_tempero,cli_email)
-            VALUES ('$nome', '$senha', 's', '$tempero', '$email')";
+            $sql = "INSERT INTO clientes (cli_nome, cli_senha,cli_tempero,cli_email,cli_ativo)
+            VALUES ('$nome', '$senha', '$tempero', '$email', 's')";
             echo($sql);
             //ALTER TABLE usuarios
             // ADD usu_temepro VARCHAR(50);
