@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             VALUES ('$nome', '$senha', 'n', '$tempero')";
             echo($sql);
             //ALTER TABLE usuarios
-            // ADD usu_temepro VARCHAR(50);
+            // ADD usu_tempero VARCHAR(50);
             mysqli_query($link, $sql);
             echo "<script>window.alert('USUARIO CADASTRADO');</script>";
             echo "<script>window.location.href='cadastrousuario.php';</script>";
