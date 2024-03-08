@@ -26,7 +26,7 @@ $retorno = mysqli_query($link, $sql);
                         <div class="product-card">
                             <h3><img src="data:image/jpeg;base64,<?= $tbl[6] ?>" width="100" height="100" ></h3><!--TRAZ SOMENTE A COLUNA 6 [IMagem] DO BANCO-->
                             <h3><?= $tbl[1] ?></h3> <!--TRAZ SOMENTE A COLUNA 1 [nome] DO BANCO-->
-                            <h3>R$<?=  number_format($tbl[4],2,',','.') ?></h3><!--TRAZ SOMENTE A COLUNA 4 [VALOR] DO BANCO-->
+                            <h3>R$<?=  number_format($tbl[5],2,',','.') ?></h3><!--TRAZ SOMENTE A COLUNA 4 [VALOR] DO BANCO-->
                             <?php 
                             if ($tbl[3] > 0 ){
                             ?>

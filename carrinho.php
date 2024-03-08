@@ -11,6 +11,7 @@ $retorno2 = mysqli_query($link,$sql);
 
 $total = 0;
 
+
 while($row = mysqli_fetch_assoc($retorno2)){
     $preco = $row['prod_valor'];
     $quantidade =$row['car_item_quantidade'];
